@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.c2ff154e944e1d79a6e2e758eab9ddf9.js"
+  "/precache-manifest.3a4f7d4b8c7e65c3fcf61f1b3d833340.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "medbox"});
