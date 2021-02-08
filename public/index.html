@@ -28,6 +28,21 @@
         continue.</strong
       >
     </noscript>
-    <div id="app"></div>
+    <div id="app" data-test=ScanQRcodevalue>
+
+    </div>
   </body>
 </html>
+
+<script>
+
+function oneChatCallBackQRScanner (ScanQRcodevalue) {
+  this.$store.commit('getqrtest', ScanQRcodevalue)
+  if (ScanQRcodevalue === '') {
+    alert('data empty ')
+  } else {
+    alert('Scan Success!')
+    alert(ScanQRcodevalue)
+  }
+}
+</script>
