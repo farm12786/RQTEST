@@ -11,15 +11,6 @@
 </template>
 
 <script>
-function oneChatCallBackQRScanner (ScanQRcodevalue) {
-  // alert(ScanQRcodevalue);
-  if (ScanQRcodevalue === '') {
-    alert('data empty ')
-  } else {
-    alert('Scan Success!')
-    alert(ScanQRcodevalue)
-  }
-}
 export default {
   name: 'App',
   data () {
@@ -28,18 +19,19 @@ export default {
     }
   },
   methods: {
-    // oneChatCallBackQRScanner (ScanQRcodevalue) {
-    //   // alert(ScanQRcodevalue);
-    //   if (ScanQRcodevalue === '') {
-    //     alert('data empty ')
-    //   } else {
-    //     alert('Scan Success!')
-    //     alert(ScanQRcodevalue)
-    //   }
-    // }
+    oneChatCallBackQRScanner (ScanQRcodevalue) {
+      // alert(ScanQRcodevalue);
+      if (ScanQRcodevalue === '') {
+        alert('data empty ')
+      } else {
+        alert('Scan Success!')
+        alert(ScanQRcodevalue)
+      }
+    }
   },
   updated () {
-    oneChatCallBackQRScanner()
+    this.oneChatCallBackQRScanner()
   }
 }
+
 </script>
