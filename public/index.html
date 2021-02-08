@@ -28,21 +28,20 @@
         continue.</strong
       >
     </noscript>
-    <div id="app" data-test=ScanQRcodevalue>
+    <a href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">
+      <font size=+4>Scan QR Code to Open Box</font>
+    </a>
+    <h1 id="qr"></h1>
 
+    <div id="app">
+      <label id="qrcode" text="" name=""></label>
     </div>
+
+    <script>
+      function oneChatCallBackQRScanner (ScanQRcodevalue) {
+        document.getElementById("qrcode").value = ScanQRcodevalue;
+      }
+    </script>
+
   </body>
 </html>
-
-<script>
-
-function oneChatCallBackQRScanner (ScanQRcodevalue) {
-  this.$store.commit('getqrtest', ScanQRcodevalue)
-  if (ScanQRcodevalue === '') {
-    alert('data empty ')
-  } else {
-    alert('Scan Success!')
-    alert(ScanQRcodevalue)
-  }
-}
-</script>

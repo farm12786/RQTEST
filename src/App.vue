@@ -1,23 +1,27 @@
 <template>
+<div>
   <v-app>
     <v-main>
       <router-view></router-view>
-      <a href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">
-      <font size=+4>Scan QR Code to Open Box</font>
-    </a>
-    <div>{{this.$store.state.qrtest}}</div>
+    {{result}}
     </v-main>
   </v-app>
+
+</div>
 </template>
 
 <script>
+var qrCode = document.getElementById('qrcode').value
+console.log(document.getElementById('qrcode').value)
 export default {
   name: 'App',
   props: ['test'],
   data () {
     return {
-      qrtest: ''
+      result: qrCode
     }
+  },
+  mounted () {
   }
 }
 
