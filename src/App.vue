@@ -3,9 +3,11 @@
   <v-app>
     <v-main>
       <router-view></router-view>
-      <div>this is result :</div>
-      <div>{{result}}</div>
-      <!-- <div>{{this.$store.state.qrtest}}</div> -->
+      <!-- <div>this is result :</div> -->
+      <!-- <div>{{result}}</div> -->
+      <div>VUEX TEST</div>
+      <div>{{this.$store.state.qrtest}}</div>
+      <button v-on:click="globalHelper">TEST BUTTON</button>
     </v-main>
   </v-app>
 
@@ -13,6 +15,7 @@
 </template>
 
 <script>
+
 var qrCode = document.getElementById('qrcode').value
 console.log(document.getElementById('qrcode').value)
 export default {
