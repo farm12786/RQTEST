@@ -8,16 +8,16 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
-// const mountEl = document.querySelector('#app')
+const mountEl = document.querySelector('#app')
 
 new Vue({
-  // render: createElement => {
-  //   const context = {
-  //     props: { ...mountEl.dataset }
-  //   }
-  //   return createElement(App, context)
-  // },
-  render: h => h(App),
+  render: createElement => {
+    const context = {
+      props: { ...mountEl.dataset }
+    }
+    return createElement(App, context)
+  },
+  // render: h => h(App),
   router,
   store,
   vuetify
