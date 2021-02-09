@@ -36,11 +36,14 @@
     <div id="app">
       <label id="qrcode" text="" name=""></label>
     </div>
-
+    <script>
+      document.getElementById('qrcode').value = 'test123456789'
+    </script>
   </body>
 </html>
 
-<script>
+<!-- <script>
+document.getElementById('qrcode').value = 'test123456789'
 function oneChatCallBackQRScanner (ScanQRcodevalue) {
   document.getElementById('qrcode').value = ScanQRcodevalue.toString()
   if (ScanQRcodevalue === '') {
@@ -50,4 +53,4 @@ function oneChatCallBackQRScanner (ScanQRcodevalue) {
     alert(ScanQRcodevalue)
   }
 }
-</script>
+</script> -->
