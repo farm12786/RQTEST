@@ -9,6 +9,7 @@
       <!-- <div>this is result :</div> -->
       <!-- <div>{{result}}</div> -->
       <div>MIXIN TEST</div>
+      <div>MIXIN TEST</div>
     </v-main>
   </v-app>
 
