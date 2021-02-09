@@ -3,11 +3,12 @@
   <v-app>
     <v-main>
       <router-view></router-view>
+      <a href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">
+      <font size=+4>Scan QR Code to Open Box</font>
+      </a>
       <!-- <div>this is result :</div> -->
       <!-- <div>{{result}}</div> -->
-      <div>MIXIN</div>
-      <div>{{this.$store.state.qrtest}}</div>
-      <button v-on:click="globalHelper">TEST BUTTON</button>
+      <div>MIXIN TEST</div>
     </v-main>
   </v-app>
 
@@ -16,24 +17,16 @@
 
 <script>
 
-var qrCode = document.getElementById('qrcode').value
-console.log(document.getElementById('qrcode').value)
+// var qrCode = document.getElementById('qrcode').value
+// console.log(document.getElementById('qrcode').value)
 export default {
   name: 'App',
   data () {
     return {
-      result: qrCode
-    }
-  },
-  watch: {
-    qrCode (newvalue, oldvalue) {
-      console.log('this is watcher')
-      console.log(newvalue)
-      console.log(oldvalue)
+      // result: qrCode
     }
   },
   mounted () {
-
   }
 }
 
