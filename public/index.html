@@ -39,14 +39,8 @@
   </body>
 </html>
 
-<script>
-function oneChatCallBackQRScanner (ScanQRcodevalue) {
-  document.getElementById('qrcode').value = ScanQRcodevalue
-  if (ScanQRcodevalue === '') {
-    alert('FAILED')
-  } else {
-    alert('SUCCESS')
-    alert(ScanQRcodevalue)
-  }
+<script type="text/javascript">
+function oneChatCallBackQRScanner (val) {
+  document.getElementById('qrcodecallback').innerHTML = val
 }
 </script>
