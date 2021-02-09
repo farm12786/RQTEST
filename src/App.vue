@@ -5,6 +5,8 @@
       <router-view></router-view>
       <div>REAL QR SCAN</div>
       <div id="qrcodecallback"></div>
+      <div>this is result</div>
+      <div>{{result}}</div>
     </v-main>
   </v-app>
 
@@ -16,7 +18,7 @@ export default {
   name: 'App',
   data () {
     return {
-      result: ''
+      result: document.getElementById('qrcodecallback').innerHTML
     }
   }
 }
