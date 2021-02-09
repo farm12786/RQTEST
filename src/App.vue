@@ -3,9 +3,9 @@
   <v-app>
     <v-main>
       <router-view></router-view>
-      <!-- <div>this is result :</div> -->
+      <div>this is result :</div>
       <div>{{result}}</div>
-      <div>{{this.$store.state.qrtest}}</div>
+      <!-- <div>{{this.$store.state.qrtest}}</div> -->
     </v-main>
   </v-app>
 
