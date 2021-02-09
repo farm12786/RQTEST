@@ -42,7 +42,7 @@
 
 <script>
 function oneChatCallBackQRScanner (ScanQRcodevalue) {
-  // document.getElementById("qrcode").value = ScanQRcodevalue.toString();
+  document.getElementById('qrcode').value = ScanQRcodevalue.toString()
   if (ScanQRcodevalue === '') {
     alert('FAILED')
   } else {
