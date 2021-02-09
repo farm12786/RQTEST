@@ -5,7 +5,7 @@
       <router-view></router-view>
       <!-- <div>this is result :</div> -->
       <!-- <div>{{result}}</div> -->
-      <div>VUEX TEST</div>
+      <div>MIXIN</div>
       <div>{{this.$store.state.qrtest}}</div>
       <button v-on:click="globalHelper">TEST BUTTON</button>
     </v-main>
