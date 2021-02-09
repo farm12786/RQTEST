@@ -29,12 +29,6 @@ Vue.mixin({
 })
 
 new Vue({
-  // render: createElement => {
-  //   const context = {
-  //     props: { ...mountEl.dataset }
-  //   }
-  //   return createElement(App, context)
-  // },
   router,
   store,
   vuetify,

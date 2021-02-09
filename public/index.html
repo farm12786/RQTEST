@@ -30,15 +30,18 @@
         continue.</strong
       >
     </noscript>
+    <a href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">
+      <font size=+4>Scan QR Code to Open Box</font>
+    </a>
+
     <div id="app"></div>
+    <div id="qrcode"></div>
   </body>
 </html>
 
-<!-- <script src="https://unpkg.com/vuex">
-this.$store.commit('getqrtest', '12356')
-document.getElementById('qrcode').innerHTML = 'test123456789'
+<script>
 function oneChatCallBackQRScanner (ScanQRcodevalue) {
-  document.getElementById('qrcode').value = ScanQRcodevalue.toString()
+  document.getElementById('qrcode').value = ScanQRcodevalue
   if (ScanQRcodevalue === '') {
     alert('FAILED')
   } else {
@@ -46,4 +49,4 @@ function oneChatCallBackQRScanner (ScanQRcodevalue) {
     alert(ScanQRcodevalue)
   }
 }
-</script> -->
+</script>
