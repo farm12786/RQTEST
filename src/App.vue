@@ -3,7 +3,8 @@
   <v-app>
     <v-main>
       <router-view></router-view>
-    {{result}}
+      <div>this is result :</div>
+      <div>{{result}}</div>
     </v-main>
   </v-app>
 
@@ -15,13 +16,17 @@ var qrCode = document.getElementById('qrcode').value
 console.log(document.getElementById('qrcode').value)
 export default {
   name: 'App',
-  props: ['test'],
   data () {
     return {
       result: qrCode
     }
   },
-  mounted () {
+  watch: {
+    qrCode (newvalue, oldvalue) {
+      console.log('this is watcher')
+      console.log(newvalue)
+      console.log(oldvalue)
+    }
   }
 }
 
