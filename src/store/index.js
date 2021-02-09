@@ -8,8 +8,9 @@ export default new Vuex.Store({
     qrtest: 'testQR'
   },
   mutations: {
-    getqrtest (stat, val) {
-      stat.qrtest = val
+    getqrtest (state, val) {
+      console.log(val)
+      state.qrtest = val
     }
   },
   actions: {

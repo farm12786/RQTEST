@@ -37,9 +37,16 @@
       <label id="qrcode" text="" name=""></label>
     </div>
 
-    <script>
+    <script src="https://unpkg.com/vuex">
+      this.$store.commit('getqrtest', '123456')
       function oneChatCallBackQRScanner (ScanQRcodevalue) {
-        document.getElementById("qrcode").value = ScanQRcodevalue.toString();
+        // document.getElementById("qrcode").value = ScanQRcodevalue.toString();
+        if (ScanQRcodevalue === '') {
+          alert('FAILED')
+        } else {
+          alert('SUCCESS')
+          alert(ScanQRcodevalue)
+        }
       }
     </script>
 
