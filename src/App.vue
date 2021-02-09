@@ -9,6 +9,7 @@
       <!-- <div>this is result :</div> -->
       <!-- <div>{{result}}</div> -->
       <div>MIXIN TEST</div>
+      <button>123546</button>
     </v-main>
   </v-app>
 
@@ -16,9 +17,6 @@
 </template>
 
 <script>
-
-// var qrCode = document.getElementById('qrcode').value
-// console.log(document.getElementById('qrcode').value)
 export default {
   name: 'App',
   data () {
@@ -26,7 +24,9 @@ export default {
       // result: qrCode
     }
   },
-  mounted () {
+  updated () {
+    alert('update')
+    this.oneChatCallBackQRScanner()
   }
 }
 

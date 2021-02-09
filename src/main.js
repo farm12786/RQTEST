@@ -12,8 +12,8 @@ Vue.config.productionTip = false
 
 Vue.mixin({
   methods: {
-    globalHelper: function () {
-      this.$store.commit('getqrtest', 123456789)
+    globalHelper () {
+      alert('HELLO')
     },
     oneChatCallBackQRScanner (ScanQRcodevalue) {
       alert('SUCCESS')
