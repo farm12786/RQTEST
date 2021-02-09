@@ -14,11 +14,17 @@
 </template>
 
 <script>
+var qrcode = document.getElementById('qrcodecallback').innerHTML
 export default {
   name: 'App',
   data () {
     return {
-      result: document.getElementById('qrcodecallback').innerHTML
+      result: qrcode
+    }
+  },
+  watch: {
+    qrcode (newValue, oldValue) {
+      this.result = newValue
     }
   }
 }
