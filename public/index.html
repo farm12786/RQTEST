@@ -37,7 +37,14 @@
 </html>
 
 <script type="text/javascript">
+
 function oneChatCallBackQRScanner (val) {
   document.getElementById('qrcodecallback').innerHTML = val
 }
+
+function oneChatBluetoothCallBackData(type, data){
+  document.getElementById('type').innerHTML = type
+  document.getElementById('data').innerHTML = data
+}
+
 </script>

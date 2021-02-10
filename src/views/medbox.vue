@@ -1,9 +1,5 @@
 <template>
   <div>
-    <!-- <a href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue">SCAN</a> -->
-    <!-- <v-btn color="red" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue">SCAN</v-btn>
-    <v-btn color="green" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue">SCAN</v-btn> -->
-    {{QRresult}}
 
   </div>
 </template>

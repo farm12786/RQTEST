@@ -8,26 +8,6 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
-// const mountEl = document.querySelector('#app')
-
-Vue.mixin({
-  methods: {
-    globalHelper () {
-      alert('HELLO')
-    },
-    oneChatCallBackQRScanner (ScanQRcodevalue) {
-      alert('SUCCESS')
-      alert(ScanQRcodevalue)
-      // if (ScanQRcodevalue === '') {
-      //   alert('FAILED')
-      // } else {
-      //   alert('SUCCESS')
-      //   alert(ScanQRcodevalue)
-      // }
-    }
-  }
-})
-
 new Vue({
   router,
   store,
