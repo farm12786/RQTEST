@@ -184,7 +184,9 @@ export default {
     window.addEventListener('oneChatCallBackQRScanner', async (e) => {
       alert('this is scan')
       this.qrcodeResult = e.detail.qrcode
-      alert(this.qrcodeResult)
+      // alert(this.qrcodeResult)
+      alert(e.detail.qrcode)
+      this.openBoxByQRCode(e.detail.qrcode)
     })
     window.addEventListener('oneChatBluetootchCallBackData', async (e) => {
       alert('this is ble')
