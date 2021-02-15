@@ -2,16 +2,9 @@
   <div>
     <v-app>
       <v-main>
-        <!-- <a href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">
-        <font size=+4>Scan QR Code to Open Box</font>
-        </a> -->
-        <div>
-          COMPLETE BLE SCAN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        </div>
-        <v-btn color="success" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">Scan QR Code</v-btn>
-        <v-btn color="yellow" @click="startScanBLE">Scan QR BLE</v-btn>
-        <!-- <div>QR Scan TEST</div>
-        <v-btn color="success" @click="init">test button</v-btn> -->
+
+        <!-- <v-btn color="success" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">Scan QR Code</v-btn>
+        <v-btn color="yellow" @click="startScanBLE">Scan QR BLE</v-btn> -->
         <router-view></router-view>
       </v-main>
     </v-app>
@@ -29,12 +22,11 @@ export default {
       time_scan: 4,
       event: null,
       scandebug: false,
-      BLEResult: null
+      BLEResult_type: null
     }
   },
   methods: {
     startScanBLE () {
-      window.webkit.messageHandlers.OneChat_scanDevice.postMessage(5000)
     },
     connectBLE (type, data) {
       if (type === 'get_device_service') {
@@ -185,18 +177,18 @@ export default {
 
   },
   async mounted () {
-    this.clearScanJob()
-    window.addEventListener('oneChatCallBackQRScanner', async (e) => {
-      alert('this is QR callback')
-      this.qrcodeResult = e.detail.qrcode
-      alert(this.qrcodeResult)
-      alert(e.detail.qrcode)
-    })
-    window.addEventListener('oneChatBluetootchCallBackData', async (e) => {
-      alert('this is BLE callback')
-      this.BLEResult = e.detail
-      alert(this.BLEResult)
-    })
+    // this.clearScanJob()
+    // window.addEventListener('oneChatCallBackQRScanner', async (e) => {
+    //   alert('this is QR callback')
+    //   this.qrcodeResult = e.detail.qrcode
+    //   alert(this.qrcodeResult)
+    //   alert(e.detail.qrcode)
+    // })
+    // window.addEventListener('oneChatBluetoothCallBackData', async (e) => {
+    //   alert('this is BLE callback')
+    //   alert(e)
+    //   alert(e.detail.type)
+    // })
   }
 }
 </script>
