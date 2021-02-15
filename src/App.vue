@@ -184,16 +184,14 @@ export default {
     window.addEventListener('oneChatCallBackQRScanner', async (e) => {
       alert('this is scan')
       this.qrcodeResult = e.detail.qrcode
-      // alert(this.qrcodeResult)
-      alert(e.detail.qrcode)
-      this.openBoxByQRCode(e.detail.qrcode)
+      alert(this.qrcodeResult)
     })
-    window.addEventListener('oneChatBluetootchCallBackData', async (e) => {
-      alert('this is ble')
-      this.BLEResult = e.detail
-      alert(this.BLEResult)
-      this.connectBLE(e.detail.type, e.detail.data)
-    })
+    // window.addEventListener('oneChatBluetootchCallBackData', async (e) => {
+    //   alert('this is ble')
+    //   this.BLEResult = e.detail
+    //   alert(this.BLEResult)
+    //   this.connectBLE(e.detail.type, e.detail.data)
+    // })
   }
 }
 </script>
