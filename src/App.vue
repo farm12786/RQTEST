@@ -172,14 +172,16 @@ export default {
     }
 
   },
-  mounted () {
+  async mounted () {
     this.clearScanJob()
     window.addEventListener('oneChatCallBackQRScanner', async (e) => {
+      alert('this is scan')
       alert(e.detail.qrcode)
       this.pupan = e.detail.qrcode
       this.openBoxByQRCode(e.detail.qrcode.toString())
     })
     window.addEventListener('oneChatBluetootchCallBackData', async (e) => {
+      alert('this is ble')
       this.data = e.detail
       alert(this.data)
       this.connectBLE(e.detail.type, e.detail.data)
