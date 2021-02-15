@@ -100,7 +100,7 @@ export default {
     },
 
     openBoxByQRCode (qrcode) {
-      console.log(qrcode)
+      alert(qrcode)
       if (qrcode) {
         let payload = {}
         const data = { boxid: qrcode.toString(), oneid: this.oneid, time: new Date().getTime(), result: 'success' }
