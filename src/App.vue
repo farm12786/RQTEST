@@ -9,7 +9,7 @@
           COMPLETE BLE SCAN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </div>
         <v-btn color="success" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">Scan QR Code</v-btn>
-        <v-btn color="red" @click="startScanBLE">Scan QR BLE</v-btn>
+        <v-btn color="blue" @click="startScanBLE">Scan QR BLE</v-btn>
         <!-- <div>QR Scan TEST</div>
         <v-btn color="success" @click="init">test button</v-btn> -->
         <router-view></router-view>
@@ -192,6 +192,7 @@ export default {
       alert('this is QR callback')
       this.qrcodeResult = e.detail.qrcode
       alert(this.qrcodeResult)
+      alert(e.detail.qrcode)
     })
     window.addEventListener('oneChatBluetootchCallBackData', async (e) => {
       alert('this is BLE callback')
