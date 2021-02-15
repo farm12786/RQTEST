@@ -107,7 +107,7 @@ export default {
       if (qrcode) {
         let payload = {}
         const data = { boxid: qrcode.toString(), oneid: this.oneid, time: new Date().getTime(), result: 'success' }
-
+        alert('data :', data)
         // alert(ScanQRcodevalue);
         if (qrcode.toLowerCase().startsWith('lys')) {
           payload = { manufacturer_data: '0x' + qrcode.substr(3) }
