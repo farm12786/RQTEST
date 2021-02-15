@@ -9,7 +9,7 @@
           COMPLETE BLE SCAN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </div>
         <v-btn color="success" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">Scan QR Code</v-btn>
-
+        <v-btn color="success" @click="openBoxByQRCode(qrcodeResult)">Scan QR BLE</v-btn>
         <!-- <div>QR Scan TEST</div>
         <v-btn color="success" @click="init">test button</v-btn> -->
         <router-view></router-view>
@@ -23,11 +23,13 @@ export default {
   name: 'App',
   data () {
     return {
+      qrcodeResult: '',
       result: '',
       scan_job: '',
       time_scan: 4,
       event: null,
-      scandebug: false
+      scandebug: false,
+      BLEResult: null
     }
   },
   methods: {
@@ -100,6 +102,7 @@ export default {
     },
 
     openBoxByQRCode (qrcode) {
+      alert('this is openBoxByQRCode')
       alert(qrcode)
       if (qrcode) {
         let payload = {}
@@ -120,6 +123,7 @@ export default {
     },
 
     unlockBLELock (mid) {
+      alert('this is unlockBLELock')
       this.scanDevice(mid, function (info) {
         this.logtoHTML(info)
 
@@ -133,6 +137,7 @@ export default {
       })
     },
     scanDevice (filter = {}, callback) {
+      alert('this is scanDevice')
       try {
         if (filter.manufacturer_data) {
           this.scan_job.manufacturer_data = filter.manufacturer_data
@@ -151,7 +156,8 @@ export default {
       }
     },
     logtoHTML (input) {
-    // alert(input)
+      alert('this is logtoHTML')
+      // alert(input)
       let out = input
       if (typeof (input) === 'object') {
         try {
@@ -164,6 +170,7 @@ export default {
     },
 
     clearScanJob () {
+      alert('this is clearScanJob')
       this.scan_job = {
         name: '',
         manufacturer_data: '',
@@ -176,14 +183,13 @@ export default {
     this.clearScanJob()
     window.addEventListener('oneChatCallBackQRScanner', async (e) => {
       alert('this is scan')
-      alert(e.detail.qrcode)
-      this.pupan = e.detail.qrcode
-      this.openBoxByQRCode(e.detail.qrcode.toString())
+      this.qrcodeResult = e.detail.qrcode
+      alert(this.qrcodeResult)
     })
     window.addEventListener('oneChatBluetootchCallBackData', async (e) => {
       alert('this is ble')
-      this.data = e.detail
-      alert(this.data)
+      this.BLEResult = e.detail
+      alert(this.BLEResult)
       this.connectBLE(e.detail.type, e.detail.data)
     })
   }
