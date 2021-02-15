@@ -2,17 +2,14 @@
   <div>
     <v-app>
       <v-main>
-
-        <a href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">
+        <!-- <a href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">
         <font size=+4>Scan QR Code to Open Box</font>
-        </a>
+        </a> -->
 
-        <div>QR Scan TEST</div>
+        <v-btn color="success" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">Scan QR Code</v-btn>
 
-        <!-- <div id="qrcode" ref="qrcode"></div>
-        <div id="qrcode" ref="qrcode"></div> -->
-
-        <v-btn color="success" @click="init">test button</v-btn>
+        <!-- <div>QR Scan TEST</div>
+        <v-btn color="success" @click="init">test button</v-btn> -->
         <router-view></router-view>
       </v-main>
     </v-app>
@@ -26,16 +23,80 @@ export default {
     return {
       result: '',
       scan_job: '',
-      time_scan: 4
+      time_scan: 4,
+      event: null,
+      scandebug: false
     }
   },
   methods: {
-    init () {
-      document.getElementById('qrcode').innerHTML = 'LYSfc58faa73da0'
-      this.result = document.getElementById('qrcode').innerHTML
-      // console.log(this.result)
-      this.openBoxByQRCode(this.result.toString())
+    connectBLE (type, data) {
+      if (type === 'get_device_service') {
+        const obj = JSON.parse(data)
+
+        for (let i = 0; i < obj.data.length; i++) {
+          const d = obj.data[i]
+          let mfdata = 'N/A'
+          let m = {}; let mx
+
+          if (d.manufacturer_data) {
+            try {
+              mx = d.manufacturer_data.replace(/[{} ]/g, '')
+              const arr = mx.split(',')
+              for (const c of arr) {
+                const b = c.split('=')
+                m[b[0]] = b[1]
+              }
+
+              if (m) {
+                mfdata = m.bytes
+              }
+
+              if (this.scan_job.manufacturer_data && (this.scan_job.manufacturer_data === mfdata)) {
+                window.webkit.messageHandlers.OneChat_stopScanDevice.postMessage()
+                if (typeof (this.scan_job.callback) === 'function') {
+                  this.scan_job.callback({
+                    count: i,
+                    name: d.bluetooth_name,
+                    uuid: d.uuid,
+                    manufacturer_data: d.manufacturer_data,
+                    state: d.state,
+                    rssi: d.rssi
+                  })
+                  this.clearScanJob()
+                }
+              }
+            } catch (e) {
+              m = 'error'
+            }
+          } else {
+            // logtoHTML('-->'+d.bluetooth_name+'<--<br>');
+            if (this.scan_job.name && (this.scan_job.name === d.bluetooth_name)) {
+              this.logtoHTML('****** to write --><br>' + JSON.stringify({ type, data }))
+
+              window.webkit.messageHandlers.OneChat_stopScanDevice.postMessage()
+              if (typeof (this.scan_job.callback) === 'function') {
+                this.scan_job.callback({
+                  round: i,
+                  name: d.bluetooth_name,
+                  uuid: d.uuid,
+                  manufacturer_data: d.manufacturer_data,
+                  state: d.state,
+                  rssi: d.rssi
+                })
+                this.clearScanJob()
+              }
+            }
+          }
+        }
+      } else {
+        if (type !== 'return_once_device' && type !== 'start_scan_bluetooth' && type !== 'write_characteristic_by_uuid' && type !== 'stop_scan_bluetooth') {
+          // alert(JSON.stringify({type, data}, undefined, 4));
+          this.scandebug = false
+          this.logtoHTML(data)
+        }
+      }
     },
+
     openBoxByQRCode (qrcode) {
       console.log(qrcode)
       if (qrcode) {
@@ -55,6 +116,7 @@ export default {
         this.log(data)
       }
     },
+
     unlockBLELock (mid) {
       this.scanDevice(mid, function (info) {
         this.logtoHTML(info)
@@ -99,13 +161,26 @@ export default {
       document.getElementById('devicelist').innerHTML = out + '<br>-------------------------------------------------<br>' + document.getElementById('devicelist').innerHTML
     },
 
-    oneChatCallBackQRScanner (val) {
-      document.getElementById('qrcodecallback').innerHTML = val
+    clearScanJob () {
+      this.scan_job = {
+        name: '',
+        manufacturer_data: '',
+        callback: ''
+      }
     }
+
   },
   mounted () {
+    this.clearScanJob()
     window.addEventListener('oneChatCallBackQRScanner', async (e) => {
-      alert(e.detail.val)
+      alert(e.detail.qrcode)
+      this.pupan = e.detail.qrcode
+      this.openBoxByQRCode(e.detail.qrcode.toString())
+    })
+    window.addEventListener('oneChatBluetootchCallBackData', async (e) => {
+      this.data = e.detail
+      alert(this.data)
+      this.connectBLE(e.detail.type, e.detail.data)
     })
   }
 }
