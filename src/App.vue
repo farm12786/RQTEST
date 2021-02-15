@@ -9,7 +9,7 @@
           COMPLETE BLE SCAN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </div>
         <v-btn color="success" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">Scan QR Code</v-btn>
-        <v-btn color="blue" @click="startScanBLE">Scan QR BLE</v-btn>
+        <v-btn color="yellow" @click="startScanBLE">Scan QR BLE</v-btn>
         <!-- <div>QR Scan TEST</div>
         <v-btn color="success" @click="init">test button</v-btn> -->
         <router-view></router-view>
@@ -33,6 +33,9 @@ export default {
     }
   },
   methods: {
+    startScanBLE () {
+      window.webkit.messageHandlers.OneChat_scanDevice.postMessage(5000)
+    },
     connectBLE (type, data) {
       if (type === 'get_device_service') {
         const obj = JSON.parse(data)
