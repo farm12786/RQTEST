@@ -6,7 +6,7 @@
         <font size=+4>Scan QR Code to Open Box</font>
         </a> -->
         <div>
-          COMPLETE BLE SCAN
+          COMPLETE BLE SCAN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </div>
         <v-btn color="success" href="https://chat-api.one.th/go_api/api/v1/openScanQRcodeWithValue" target="_blank">Scan QR Code</v-btn>
 
