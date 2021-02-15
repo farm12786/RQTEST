@@ -124,6 +124,7 @@ export default {
 
     unlockBLELock (mid) {
       alert('this is unlockBLELock')
+      alert(mid)
       this.scanDevice(mid, function (info) {
         this.logtoHTML(info)
 
@@ -138,6 +139,7 @@ export default {
     },
     scanDevice (filter = {}, callback) {
       alert('this is scanDevice')
+      alert('filter : ', filter)
       try {
         if (filter.manufacturer_data) {
           this.scan_job.manufacturer_data = filter.manufacturer_data
